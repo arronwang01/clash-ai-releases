@@ -54,7 +54,7 @@
   <p class="lead">Clash AI runs on your computer next to the MuMu emulator. Download it below, then follow the install steps: what you need, how to open it past the security warnings, and how to check it is the real one.</p>
   <div class="row"><a class="btn primary" id="dl-mac" href="https://github.com/arronwang01/clash-ai-releases/releases/latest/download/Clash-AI.dmg" download>Download for Mac</a><a class="btn" href="#install">How to install</a></div>
   <p class="muted small" style="margin-top:10px"><b>You need an invite key</b> from whoever sent you here: the app asks for it the first time you open it. The download is small (2 MB). The first time you open it, it fetches about 400 MB. Needs a Mac with Apple silicon, MuMu Player Pro and Clash Royale: <a href="#install">see the steps</a>.</p>
-  <p class="muted small" style="margin-top:14px">Mac with Apple silicon first. Windows comes after it has been tested. Not affiliated with, endorsed by, or connected to Supercell.</p>
+  <p class="muted small" style="margin-top:14px">Mac with Apple silicon first. Windows is a preview that has not been tested on a real PC yet. Not affiliated with, endorsed by, or connected to Supercell.</p>
 </div></section>
 
 <section id="install"><div class="wrap">
@@ -68,7 +68,7 @@
     <div class="card"><b>About 1 GB free</b><span class="muted small">For the app and its models.</span></div>
   </div>
 
-  <div class="tabs" role="tablist" aria-label="Operating system"><button role="tab" id="t-mac" aria-selected="true" aria-controls="p-mac">Mac</button><button role="tab" id="t-win" aria-selected="false" aria-controls="p-win">Windows (soon)</button></div>
+  <div class="tabs" role="tablist" aria-label="Operating system"><button role="tab" id="t-mac" aria-selected="true" aria-controls="p-mac">Mac</button><button role="tab" id="t-win" aria-selected="false" aria-controls="p-win">Windows (preview)</button></div>
 
   <div role="tabpanel" id="p-mac" aria-labelledby="t-mac">
     <h3>Step 0: set up MuMu (once)</h3>
@@ -95,13 +95,17 @@
   </div>
 
   <div role="tabpanel" id="p-win" aria-labelledby="t-win" hidden>
-    <div class="note"><b>Windows is not released yet.</b> It needs testing on a real Windows PC first. This is what the install will look like, so you know what to expect.</div>
+    <div class="note"><b>Windows is a preview.</b> It was written without a Windows PC to test on, so expect rough edges and tell us what breaks. The game-reading offsets for Windows are also not confirmed yet: the Setup screen will say if they do not work on your PC.</div>
     <ol class="steps">
-      <li><b>Download <code>ClashAI-win.zip</code> and unzip it</b>Right-click the zip, choose Extract All.</li>
-      <li><b>Windows will say "Windows protected your PC"</b>This is SmartScreen. It shows for any new app that has not built up a reputation. Click <b>More info</b>, then <b>Run anyway</b>.</li>
-      <li><b>Allow it through the firewall</b>If Windows Defender Firewall asks, tick <b>Private networks</b> and click <b>Allow access</b>. Only the phone feature needs this.</li>
-      <li><b>If your antivirus removes it</b>New unsigned programs are sometimes flagged by mistake. First check the SHA-256 (PowerShell: <code>Get-FileHash .\ClashAI-win.zip</code>) against the one on this page. If it matches, open <b>Windows Security → Virus &amp; threat protection → Protection history</b>, find Clash AI, and choose <b>Restore</b> or <b>Allow on device</b>.</li>
+      <li><b>Install MuMu Player 12 (or 15)</b>Download it from MuMu's own website and open it until you see the Android home screen.</li>
+      <li><b>Turn on Root</b>In MuMu's settings find the <b>Root</b> option (it may be called "Root permission" or "Root access") and turn it on. MuMu restarts the device.</li>
+      <li><b>Install Clash Royale in MuMu</b>Use the Play Store inside MuMu, sign in once, then turn off its automatic updates. Clash AI works with one exact game version (160402012).</li>
+      <li><b>Download Clash AI</b>Press <b>Download for Windows</b> below. Open the zip and double-click <b>Install Clash AI</b>. Windows shows "Windows protected your PC" because we do not pay for a certificate: click <b>More info</b>, then <b>Run anyway</b>. Once.</li>
+      <li><b>Wait for the setup</b>A window shows the steps (about five minutes, it needs internet). It puts everything in a folder called <code>ClashAI</code> in your user folder and adds a <b>Clash AI</b> shortcut to your desktop and Start menu. It needs no administrator rights.</li>
+      <li><b>Open Clash AI</b>Paste your invite key, follow the Setup screen, open Clash Royale in MuMu, switch <b>Autoplay</b> on, then start a Friendly Battle or Training Camp yourself.</li>
     </ol>
+    <p><a class="btn primary" id="dl-win" href="https://github.com/arronwang01/clash-ai-releases/releases/latest/download/Install-Clash-AI-Windows.zip" download>Download for Windows (preview)</a></p>
+    <p class="muted small">The HUD on the MuMu window itself is Mac-only for now; the board, the phone view and the HUD on the board work on both.</p>
   </div>
 </div></section>
 
