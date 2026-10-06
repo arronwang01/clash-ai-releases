@@ -51,8 +51,9 @@
 <section class="hero"><div class="wrap">
   <span class="badge">Closed beta</span>
   <h1>A simple assistant for Clash Royale friendly battles.</h1>
-  <p class="lead">Clash AI runs on your computer next to the MuMu emulator. This page is the install guide: what you need, how to open the app past the security warnings, and how to check the download is the real one.</p>
-  <div class="row"><a class="btn primary" id="dl-mac" href="#install">Install on Mac</a><a class="btn" id="join" href="#faq">Join the beta</a></div>
+  <p class="lead">Clash AI runs on your computer next to the MuMu emulator. Download it below, then follow the install steps: what you need, how to open it past the security warnings, and how to check it is the real one.</p>
+  <div class="row"><a class="btn primary" id="dl-mac" href="https://github.com/arronwang01/clash-ai-releases/releases/latest/download/Install-Clash-AI.zip" download>Download for Mac</a><a class="btn" href="#install">How to install</a></div>
+  <p class="muted small" style="margin-top:10px">About 400 MB gets downloaded after you run it. Needs a Mac with Apple silicon, MuMu Player Pro and Clash Royale: <a href="#install">see the steps</a>.</p>
   <p class="muted small" style="margin-top:14px">Mac with Apple silicon first. Windows comes after it has been tested. Not affiliated with, endorsed by, or connected to Supercell.</p>
 </div></section>
 
@@ -79,9 +80,11 @@
     </ol>
     <h3>Then install Clash AI</h3>
     <ol class="steps">
-      <li><b>Open Terminal</b>Press <b>Command + Space</b>, type <b>Terminal</b>, and press Enter. A window with a text prompt opens. That is all it is.</li>
-      <li><b>Paste this one line and press Enter</b>The beta installer is a short script you can read before you run it: <a href="#" id="script-link">view install.sh</a>.<pre id="install-line">curl -fsSL https://github.com/arronwang01/clash-ai-releases/releases/latest/download/install.sh | bash</pre>
-        <p class="muted small" style="margin-top:8px">It downloads about 400 MB (the app, the models and a private copy of Python) and puts everything in a folder called <code>ClashAI</code> in your home folder. It does not need your password and does not install anything system-wide. It takes a few minutes. You will see each step.</p></li>
+      <li><b>Get the installer</b>Pick one way. <b>A. Download:</b> press <b>Download for Mac</b> at the top, open the zip (double-click it in Finder), then double-click <b>Install Clash AI</b>. The first time, macOS may say it cannot check the file: <b>right-click it, choose Open, then Open again</b>. That happens once.
+        <br><b>B. One line, no warnings:</b> press Command + Space, type <b>Terminal</b>, press Enter, and paste this:
+        <pre id="install-line">curl -fsSL https://github.com/arronwang01/clash-ai-releases/releases/latest/download/install.sh | bash</pre>
+        <button class="btn" id="copy-line" type="button" style="margin-top:8px">Copy the line</button>
+        <p class="muted small" style="margin-top:8px">Both do the same thing, and the script is short enough to read first: <a href="#" id="script-link">view install.sh</a>. It downloads about 400 MB (the app, the models and a private copy of Python) into a folder called <code>ClashAI</code> in your home folder. It needs no password and installs nothing system-wide. It takes a few minutes and shows each step.</p></li>
       <li><b>Wait for "Done"</b>The last thing it prints is a quick check of your Mac. A red line there tells you what is missing; the app explains each one.</li>
       <li><b>Open Clash AI</b>Open the <b>Applications</b> folder inside your home folder (<code>~/Applications</code>) and double-click <b>Clash AI</b>. Because the installer made the app on your own Mac, macOS does not show the "cannot be opened" warning.
         <details><summary>macOS still says it cannot open it</summary><p>Go to <b>System Settings → Privacy &amp; Security</b>, scroll to Security, and click <b>Open Anyway</b> next to Clash AI. If that is missing, paste this in Terminal:</p><pre>xattr -dr com.apple.quarantine ~/Applications/"Clash AI.app" ~/ClashAI</pre></details></li>
@@ -134,7 +137,8 @@
   /* Fill these in when they exist. While a link is empty its button points at the install steps, so nothing is dead. */
   const LINKS = { mac: '', windows: '', discord: '', installScript: 'https://github.com/arronwang01/clash-ai-releases/releases/latest/download/install.sh' };      // installScript: the public raw URL of install.sh
   if (LINKS.installScript) document.getElementById('script-link').href = LINKS.installScript;
-  if (LINKS.discord) { const a = document.getElementById('join'); a.href = LINKS.discord; a.textContent = 'Join the Discord'; }
+  const copy = document.getElementById('copy-line');
+  if (copy) copy.addEventListener('click', async () => { const text = document.getElementById('install-line').textContent; try { await navigator.clipboard.writeText(text); copy.textContent = 'Copied'; } catch (e) { const r = document.createRange(); r.selectNodeContents(document.getElementById('install-line')); getSelection().removeAllRanges(); getSelection().addRange(r); copy.textContent = 'Select and copy'; } setTimeout(() => { copy.textContent = 'Copy the line'; }, 1800); });
   const tabs = [...document.querySelectorAll('[role="tab"]')];
   function show(tab) { for (const t of tabs) { const on = t === tab; t.setAttribute('aria-selected', on); document.getElementById(t.getAttribute('aria-controls')).hidden = !on; } }
   for (const t of tabs) { t.addEventListener('click', () => show(t)); t.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const n = tabs[(tabs.indexOf(t) + 1) % tabs.length]; n.focus(); show(n); } }); }
